@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shine &amp; Glow — Bridal, Beauty &amp; Skin Studio, Betnoti</title>
+<meta name="description" content="Shine & Glow is Betnoti's boutique for bridal services, hairstyling, make-up, permanent make-up, skin treatments and hair straightening. Book instantly on WhatsApp.">
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&amp;family=Jost:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+  /* ============ DESIGN TOKENS ============ */
+  :root{
+    --ink:#201418;
+    --plum:#3B2130;
+    --rose:#B76E79;
+    --rose-deep:#9C5661;
+    --rose-light:#EAD3CD;
+    --gold:#C6A15B;
+    --gold-light:#E4CD9C;
+    --ivory:#FBF5EE;
+    --ivory-2:#F3E6DA;
+    --charcoal:#2B2320;
+    --whatsapp:#25D366;
+    --whatsapp-dark:#1DA851;
+    --shadow: 0 30px 60px -20px rgba(32,20,24,0.35);
+    --edge: 0 26px 0 26px; /* signature asymmetric corner */
+    --container: 1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ivory);
+    color:var(--charcoal);
+    font-family:'Jost', sans-serif;
+    font-weight:300;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  h1,h2,h3,h4{
+    font-family:'Cormorant Garamond', serif;
+    font-weight:500;
+    margin:0 0 .4em;
+    color:var(--ink);
+    line-height:1.1;
+  }
+  a{color:inherit; text-decoration:none;}
+  img{max-width:100%; display:block;}
+  .container{max-width:var(--container); margin:0 auto; padding:0 28px;}
+  .amp{color:var(--rose); font-style:italic;}
+  .tag{
+    font-family:'Cormorant Garamond', serif;
+    font-style:italic;
+    font-size:1.15rem;
+    color:var(--rose-deep);
+    letter-spacing:.02em;
+  }
+  ::selection{background:var(--rose-light); color:var(--ink);}
+  :focus-visible{outline:2px solid var(--rose-deep); outline-offset:3px;}
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:.001ms !important; animation-iteration-count:1 !important; transition-duration:.001ms !important; scroll-behavior:auto !important;}
+  }
+
+  /* ============ HEADER ============ */
+  .site-header{
+    position:fixed; top:0; left:0; right:0; z-index:500;
+    background:rgba(251,245,238,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid rgba(32,20,24,0.07);
+    transition:background .3s ease;
+  }
+  .header-inner{
+    display:flex; align-items:center; justify-content:space-between;
+    padding-top:16px; padding-bottom:16px;
+  }
+  .logo{
+    font-family:'Cormorant Garamond', serif;
+    font-size:1.7rem;
+    letter-spacing:.03em;
+    color:var(--ink);
+    white-space:nowrap;
+  }
+  .main-nav{display:flex; align-items:center; gap:34px;}
+  .main-nav a{
+    font-size:.92rem; letter-spacing:.04em; color:var(--charcoal);
+    position:relative; padding:4px 0;
+  }
+  .main-nav a:not(.nav-book)::after{
+    content:''; position:absolute; left:0; right:100%; bottom:-2px; height:1px;
+    background:var(--rose-deep); transition:right .25s ease;
+  }
+  .main-nav a:not(.nav-book):hover::after,
+  .main-nav a.active::after{ right:0; }
+  .main-nav a.active{color:var(--rose-deep);}
+  .nav-book{
+    background:var(--ink); color:var(--ivory) !important;
+    padding:10px 20px; border-radius:var(--edge);
+    font-size:.85rem; letter-spacing:.03em;
+    display:inline-flex; align-items:center; gap:8px;
+    transition:background .25s ease, transform .25s ease;
+  }
+  .nav-book:hover{background:var(--rose-deep); transform:translateY(-2px);}
+  .nav-book svg{width:15px; height:15px; fill:currentColor;}
+  .nav-toggle{
+    display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:6px;
+  }
+  .nav-toggle span{width:24px; height:1.5px; background:var(--ink); display:block; transition:.3s;}
+
+  @media (max-width:880px){
+    .main-nav{
+      position:fixed; inset:0 0 0 30%; background:var(--ivory);
+      flex-direction:column; justify-content:center; align-items:flex-start;
+      padding:40px; gap:26px; transform:translateX(100%); transition:transform .4s cubic-bezier(.6,0,.2,1);
+      box-shadow:-10px 0 40px rgba(0,0,0,.15);
+    }
+    .main-nav.open{transform:translateX(0);}
+    .main-nav a{font-size:1.3rem;}
+    .nav-toggle{display:flex;}
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex; align-items:center;
+    padding:150px 0 90px;
+    overflow:hidden;
+    background:
+      radial-gradient(ellipse 60% 50% at 85% 15%, rgba(198,161,91,.22), transparent 60%),
+      radial-gradient(ellipse 70% 60% at 10% 90%, rgba(183,110,121,.18), transparent 60%),
+      var(--ivory);
+  }
+  .hero-blob{
+    position:absolute; border-radius:50%; filter:blur(60px); opacity:.5; z-index:0;
+    animation:driftBlob 16s ease-in-out infinite;
+  }
+  .hero-blob.b1{width:420px; height:420px; background:var(--rose-light); top:-120px; right:-100px;}
+  .hero-blob.b2{width:320px; height:320px; background:var(--gold-light); bottom:-100px; left:-80px; animation-delay:-6s;}
+  @keyframes driftBlob{
+    0%,100%{transform:translate(0,0) scale(1);}
+    50%{transform:translate(-30px,30px) scale(1.08);}
+  }
+
+  .hero-inner{
+    position:relative; z-index:2;
+    display:grid; grid-template-columns:1.05fr .95fr; gap:40px; align-items:center;
+    width:100%; max-width:var(--container); margin:0 auto; padding:0 28px;
+  }
+  .hero-copy .tag{display:inline-block; margin-bottom:18px; opacity:0; animation:riseIn .8s ease forwards .1s;}
+  .hero-copy h1{
+    font-size:clamp(2.8rem, 5.4vw, 4.6rem);
+    opacity:0; animation:riseIn .9s ease forwards .28s;
+  }
+  .hero-copy h1 em{font-style:italic; color:var(--rose-deep);}
+  .hero-copy p.lede{
+    max-width:46ch; font-size:1.08rem; color:#544846; margin:22px 0 34px;
+    opacity:0; animation:riseIn .9s ease forwards .46s;
+  }
+  .hero-ctas{display:flex; flex-wrap:wrap; gap:16px; opacity:0; animation:riseIn .9s ease forwards .62s;}
+  @keyframes riseIn{ from{opacity:0; transform:translateY(22px);} to{opacity:1; transform:translateY(0);} }
+
+  .btn{
+    display:inline-flex; align-items:center; gap:10px;
+    padding:15px 30px; font-family:'Jost',sans-serif; font-size:.95rem; letter-spacing:.03em;
+    border-radius:var(--edge); cursor:pointer; border:1px solid transparent;
+    transition:transform .3s ease, box-shadow .3s ease, background .3s ease, color .3s ease;
+  }
+  .btn svg{width:18px; height:18px; fill:currentColor; flex-shrink:0;}
+  .btn-primary{
+    background:linear-gradient(120deg, var(--whatsapp), var(--whatsapp-dark));
+    color:#fff; box-shadow:0 16px 30px -12px rgba(29,168,81,.55);
+  }
+  .btn-primary:hover{transform:translateY(-3px); box-shadow:0 20px 34px -12px rgba(29,168,81,.65);}
+  .btn-ghost{
+    border-color:rgba(32,20,24,.25); color:var(--ink); background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--ink); background:var(--ink); color:var(--ivory);}
+  .btn-gold{
+    background:var(--ink); color:var(--gold-light);
+  }
+  .btn-gold:hover{background:var(--rose-deep); color:#fff;}
+
+  .hero-stat-row{display:flex; gap:34px; margin-top:46px; opacity:0; animation:riseIn .9s ease forwards .78s;}
+  .hero-stat-row div strong{display:block; font-family:'Cormorant Garamond',serif; font-size:1.9rem; color:var(--ink);}
+  .hero-stat-row div span{font-size:.82rem; color:#6b5e5a;}
+
+  /* --- 3D floating photo stack --- */
+  .hero-visual{
+    position:relative; height:560px; perspective:1400px;
+  }
+  .stack{
+    position:absolute; inset:0; transform-style:preserve-3d;
+    transition:transform .15s ease-out;
+  }
+  .stack-card{
+    position:absolute; border-radius:var(--edge); overflow:hidden;
+    box-shadow:var(--shadow); border:6px solid var(--ivory);
+    opacity:0; transform-style:preserve-3d;
+  }
+  .stack-card img{width:100%; height:100%; object-fit:cover;}
+  .card-a{ width:62%; aspect-ratio:3/4; top:2%; left:0; z-index:3; animation:settleA 1s cubic-bezier(.2,.8,.2,1) forwards .3s, floatA 7s ease-in-out infinite 1.4s; }
+  .card-b{ width:54%; aspect-ratio:3/4; bottom:0; right:0; z-index:2; animation:settleB 1s cubic-bezier(.2,.8,.2,1) forwards .5s, floatB 8s ease-in-out infinite 1.6s; }
+  .card-c{ width:40%; aspect-ratio:1/1; top:46%; left:38%; z-index:4; animation:settleC 1s cubic-bezier(.2,.8,.2,1) forwards .7s, floatC 6.5s ease-in-out infinite 1.8s; }
+  @keyframes settleA{ from{opacity:0; transform:translate3d(40px,-30px,-80px) rotateY(-18deg) rotateX(8deg);} to{opacity:1; transform:translate3d(0,0,10px) rotateY(-8deg) rotateX(3deg);} }
+  @keyframes settleB{ from{opacity:0; transform:translate3d(-30px,40px,-60px) rotateY(14deg) rotateX(-6deg);} to{opacity:1; transform:translate3d(0,0,0) rotateY(9deg) rotateX(-2deg);} }
+  @keyframes settleC{ from{opacity:0; transform:translate3d(0,50px,40px) scale(.8) rotate(-6deg);} to{opacity:1; transform:translate3d(0,0,60px) scale(1) rotate(-4deg);} }
+  @keyframes floatA{ 0%,100%{margin-top:0;} 50%{margin-top:-14px;} }
+  @keyframes floatB{ 0%,100%{margin-top:0;} 50%{margin-top:12px;} }
+  @keyframes floatC{ 0%,100%{margin-top:0px; margin-left:0px;} 50%{margin-top:-10px; margin-left:8px;} }
+
+  .seal{
+    position:absolute; width:118px; height:118px; left:-10px; top:8%; z-index:5;
+    animation:spin 22s linear infinite, fadeIn 1s ease forwards 1.1s; opacity:0;
+  }
+  @keyframes spin{ to{transform:rotate(360deg);} }
+  @keyframes fadeIn{ to{opacity:1;} }
+  .seal-core{
+    position:absolute; inset:30px; background:var(--ink); border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .seal-core svg{width:26px; height:26px; fill:var(--gold-light);}
+
+  @media (max-width:980px){
+    .hero-inner{grid-template-columns:1fr; text-align:left;}
+    .hero-visual{height:400px; order:-1; margin-bottom:10px;}
+    .hero{padding-top:120px;}
+  }
+  @media (max-width:560px){
+    .hero-stat-row{gap:22px;}
+    .seal{display:none;}
+  }
+
+  /* ============ MARQUEE STRIP ============ */
+  .marquee{
+    background:var(--ink); color:var(--ivory-2); padding:16px 0; overflow:hidden; white-space:nowrap;
+  }
+  .marquee-track{display:inline-block; animation:scrollLeft 26s linear infinite;}
+  .marquee-track span{
+    display:inline-flex; align-items:center; gap:14px; font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.15rem; padding:0 30px;
+  }
+  .marquee-track span i{width:5px; height:5px; background:var(--gold); border-radius:50%; font-style:normal;}
+  @keyframes scrollLeft{ from{transform:translateX(0);} to{transform:translateX(-50%);} }
+
+  /* ============ SECTION GENERICS ============ */
+  section{padding:110px 0;}
+  .section-head{max-width:640px; margin-bottom:64px;}
+  .section-head .tag{display:block; margin-bottom:10px;}
+  .section-head h2{font-size:clamp(2.1rem,3.6vw,3rem);}
+  .reveal{opacity:0; transform:translateY(28px); transition:opacity .8s ease, transform .8s ease;}
+  .reveal.in{opacity:1; transform:translateY(0);}
+
+  /* ============ ABOUT PREVIEW ============ */
+  .about-preview{background:var(--ivory-2);}
+  .about-grid{display:grid; grid-template-columns:.85fr 1.15fr; gap:70px; align-items:center;}
+  .about-photo{position:relative;}
+  .about-photo img{border-radius:var(--edge); box-shadow:var(--shadow); width:100%; aspect-ratio:4/5; object-fit:cover;}
+  .about-photo .float-badge{
+    position:absolute; bottom:-26px; left:-26px; background:var(--ink); color:var(--gold-light);
+    padding:22px 26px; border-radius:var(--edge); box-shadow:var(--shadow);
+    font-family:'Cormorant Garamond',serif;
+  }
+  .about-photo .float-badge strong{display:block; font-size:2.1rem; line-height:1;}
+  .about-photo .float-badge span{font-size:.78rem; font-family:'Jost',sans-serif; letter-spacing:.03em; color:var(--ivory-2);}
+  .about-copy p{color:#544846; max-width:52ch; margin-bottom:26px;}
+  .why-list{list-style:none; padding:0; margin:0 0 34px; display:grid; gap:0;}
+  .why-list li{
+    padding:18px 0; border-top:1px solid rgba(32,20,24,.1); display:flex; gap:16px; align-items:flex-start;
+  }
+  .why-list li:last-child{border-bottom:1px solid rgba(32,20,24,.1);}
+  .why-list svg{width:20px; height:20px; fill:var(--rose-deep); flex-shrink:0; margin-top:3px;}
+  .why-list h4{font-size:1.1rem; margin-bottom:2px;}
+  .why-list p{margin:0; font-size:.92rem; color:#6b5e5a;}
+
+  @media (max-width:900px){ .about-grid{grid-template-columns:1fr;} .about-photo{max-width:380px;} }
+
+  /* ============ SERVICES ============ */
+  .services{background:var(--ivory);}
+  .chapter{margin-bottom:100px;}
+  .chapter:last-child{margin-bottom:0;}
+  .chapter-head{display:flex; justify-content:space-between; align-items:flex-end; gap:20px; margin-bottom:38px; border-bottom:1px solid rgba(32,20,24,.12); padding-bottom:22px;}
+  .chapter-head h3{font-size:clamp(1.7rem,3vw,2.3rem);}
+  .chapter-head p{margin:0; max-width:32ch; font-size:.92rem; color:#6b5e5a; text-align:right;}
+  .service-rows{display:grid; gap:34px;}
+  .service-row{
+    display:grid; grid-template-columns:220px 1fr auto; gap:30px; align-items:center;
+    padding:20px; border-radius:var(--edge); transition:background .3s ease, transform .3s ease;
+  }
+  .service-row:hover{background:var(--ivory-2); transform:translateX(4px);}
+  .service-row .thumb{width:220px; aspect-ratio:4/3; border-radius:var(--edge); overflow:hidden; box-shadow:0 18px 30px -16px rgba(32,20,24,.3);}
+  .service-row .thumb img{width:100%; height:100%; object-fit:cover; transition:transform .5s ease;}
+  .service-row:hover .thumb img{transform:scale(1.06);}
+  .service-row .info h4{font-size:1.5rem; margin-bottom:6px;}
+  .service-row .info p{margin:0; color:#6b5e5a; font-size:.92rem; max-width:44ch;}
+  .service-row .price-cta{text-align:right; display:flex; flex-direction:column; align-items:flex-end; gap:10px;}
+  .price{font-family:'Cormorant Garamond',serif; font-size:1.7rem; color:var(--rose-deep); white-space:nowrap;}
+  .price small{font-family:'Jost',sans-serif; font-size:.7rem; color:#6b5e5a; display:block; letter-spacing:.03em;}
+  .book-link{
+    display:inline-flex; align-items:center; gap:7px; font-size:.82rem; letter-spacing:.02em;
+    border-bottom:1px solid var(--ink); padding-bottom:2px; white-space:nowrap;
+  }
+  .book-link svg{width:13px; height:13px; fill:currentColor;}
+  .book-link:hover{color:var(--whatsapp-dark); border-color:var(--whatsapp-dark);}
+
+  @media (max-width:760px){
+    .chapter-head{flex-direction:column; align-items:flex-start;}
+    .chapter-head p{text-align:left;}
+    .service-row{grid-template-columns:100px 1fr; grid-template-areas:"thumb info" "cta cta";}
+    .service-row .thumb{grid-area:thumb; width:100px;}
+    .service-row .info{grid-area:info;}
+    .service-row .price-cta{grid-area:cta; align-items:flex-start; text-align:left; flex-direction:row; justify-content:space-between; margin-top:8px;}
+  }
+
+  /* ============ REVIEWS / CTA ============ */
+  .reviews{
+    background:var(--ink); color:var(--ivory);
+    position:relative; overflow:hidden;
+  }
+  .reviews::before{
+    content:''; position:absolute; width:520px; height:520px; border-radius:50%;
+    background:radial-gradient(circle, rgba(198,161,91,.22), transparent 65%);
+    top:-200px; right:-150px;
+  }
+  .reviews-grid{display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:center; position:relative; z-index:1;}
+  .reviews h2{color:var(--ivory);}
+  .stars{display:flex; gap:4px; margin-bottom:18px;}
+  .stars svg{width:20px; height:20px; fill:var(--gold);}
+  .reviews p.lede{color:#d8c9c2; max-width:46ch; margin-bottom:30px;}
+  .quote-card{
+    background:rgba(255,255,255,.05); border:1px solid rgba(255,255,255,.12);
+    padding:30px; border-radius:var(--edge); margin-bottom:20px;
+  }
+  .quote-card p{font-family:'Cormorant Garamond',serif; font-style:italic; font-size:1.25rem; color:var(--ivory-2); margin:0 0 14px;}
+  .quote-card span{font-size:.8rem; color:#b6a49d; letter-spacing:.03em;}
+
+  @media (max-width:900px){ .reviews-grid{grid-template-columns:1fr;} }
+
+  /* ============ FINAL CTA BANNER ============ */
+  .cta-banner{
+    background:linear-gradient(120deg, var(--rose-deep), var(--plum));
+    color:var(--ivory); text-align:center; padding:90px 0;
+  }
+  .cta-banner h2{color:var(--ivory); font-size:clamp(2rem,4vw,3rem); margin-bottom:16px;}
+  .cta-banner p{color:#f1e2dc; max-width:50ch; margin:0 auto 34px;}
+  .cta-banner .btn-row{display:flex; justify-content:center; gap:16px; flex-wrap:wrap;}
+
+  /* ============ FOOTER ============ */
+  .site-footer{background:var(--ivory-2); padding-top:80px;}
+  .footer-grid{display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:50px; padding-bottom:50px; border-bottom:1px solid rgba(32,20,24,.1);}
+  .footer-logo{margin-bottom:14px; display:inline-block;}
+  .footer-brand p{color:#6b5e5a; max-width:32ch; font-size:.92rem;}
+  .review-link{
+    display:inline-flex; align-items:center; gap:8px; margin-top:14px; font-size:.88rem;
+    color:var(--rose-deep); border-bottom:1px solid var(--rose-deep); padding-bottom:2px;
+  }
+  .review-link svg{width:15px; height:15px; fill:var(--gold);}
+  .site-footer h4{font-family:'Jost',sans-serif; font-weight:500; font-size:.82rem; letter-spacing:.05em; color:var(--ink); margin-bottom:18px;}
+  .footer-links, .footer-contact{display:flex; flex-direction:column; gap:12px; font-size:.92rem; color:#544846;}
+  .footer-contact .hours{color:#8a7b76; font-size:.85rem; margin-top:4px;}
+  .footer-bottom{display:flex; justify-content:space-between; padding:26px 0; font-size:.8rem; color:#8a7b76; flex-wrap:wrap; gap:10px;}
+
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr; gap:34px;} }
+
+  /* ============ WHATSAPP FLOAT ============ */
+  .whatsapp-float{
+    position:fixed; bottom:26px; right:26px; z-index:600;
+    width:60px; height:60px; border-radius:50%;
+    background:var(--whatsapp); display:flex; align-items:center; justify-content:center;
+    box-shadow:0 14px 30px -8px rgba(29,168,81,.6);
+  }
+  .whatsapp-float svg{width:28px; height:28px; fill:#fff;}
+  .whatsapp-float::after{
+    content:''; position:absolute; inset:0; border-radius:50%; border:2px solid var(--whatsapp);
+    animation:pulseRing 2.2s ease-out infinite;
+  }
+  @keyframes pulseRing{ 0%{transform:scale(1); opacity:.7;} 100%{transform:scale(1.7); opacity:0;} }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container header-inner">
+    <a href="index.html" class="logo">Shine <span class="amp">&amp;</span> Glow</a>
+    <nav class="main-nav" id="mainNav">
+      <a href="index.html" class="active">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+      <a class="nav-book" target="_blank" rel="noopener"
+         href="https://wa.me/919439732414?text=Hi%20Shine%20%26%20Glow%2C%20I%27d%20like%20to%20book%20an%20appointment.">
+        <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3zm0 21.6c-2 0-3.86-.55-5.45-1.5l-.39-.23-4.63 1.07 1.1-4.5-.25-.4A9.55 9.55 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6s-4.3 9.6-9.6 9.6z"/></svg>
+        Book on WhatsApp
+      </a>
+    </nav>
+    <button class="nav-toggle" id="navToggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+  <div class="hero-blob b1"></div>
+  <div class="hero-blob b2"></div>
+  <div class="hero-inner">
+    <div class="hero-copy">
+      <span class="tag">Betnoti's boutique beauty studio</span>
+      <h1>Shine bright, <em>glow</em> effortlessly.</h1>
+      <p class="lede">Bridal styling, hair, make-up, permanent make-up and skin care — done with premium products and an unhurried hand. Send us a message and we'll hold your slot the same day.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" target="_blank" rel="noopener"
+           href="https://wa.me/919439732414?text=Hi%20Shine%20%26%20Glow%2C%20I%27d%20like%20to%20book%20an%20appointment.">
+          <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3zm0 21.6c-2 0-3.86-.55-5.45-1.5l-.39-.23-4.63 1.07 1.1-4.5-.25-.4A9.55 9.55 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6s-4.3 9.6-9.6 9.6z"/></svg>
+          Book on WhatsApp
+        </a>
+        <a class="btn btn-ghost" href="#services">See our services</a>
+      </div>
+      <div class="hero-stat-row">
+        <div><strong>6+</strong><span>signature services</span></div>
+        <div><strong>₹500</strong><span>make-up starts from</span></div>
+        <div><strong>1 tap</strong><span>to book on WhatsApp</span></div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="seal">
+        <svg viewBox="0 0 200 200" width="118" height="118">
+          <defs><path id="circlePath" d="M100,100 m-78,0 a78,78 0 1,1 156,0 a78,78 0 1,1 -156,0"/></defs>
+          <text font-family="Jost, sans-serif" font-size="12.5" letter-spacing="2.6" fill="#3B2130">
+            <textPath href="#circlePath">• BRIDAL &amp; BEAUTY • BETNOTI, ODISHA • SHINE &amp; GLOW </textPath>
+          </text>
+        </svg>
+        <div class="seal-core"><svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg></div>
+      </div>
+      <div class="stack" id="stack3d">
+        <div class="stack-card card-a"><img src="https://loremflickr.com/700/900/bridal,makeup,bride/all?lock=101" alt="Bridal make-up look by Shine & Glow"></div>
+        <div class="stack-card card-b"><img src="https://loremflickr.com/700/900/hairstyle,salon,haircut/all?lock=102" alt="Hairstyling session at Shine & Glow"></div>
+        <div class="stack-card card-c"><img src="https://loremflickr.com/600/600/beautysalon,interior/all?lock=103" alt="Inside the Shine & Glow studio"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee" aria-hidden="true">
+  <div class="marquee-track">
+    <span><i></i>Bridal Services<i></i>Hairstyling<i></i>Make-up<i></i>Permanent Make-up<i></i>Skin Treatment<i></i>Straightening &amp; Smoothening</span>
+    <span><i></i>Bridal Services<i></i>Hairstyling<i></i>Make-up<i></i>Permanent Make-up<i></i>Skin Treatment<i></i>Straightening &amp; Smoothening</span>
+  </div>
+</div>
+
+<!-- ============ ABOUT PREVIEW ============ -->
+<section class="about-preview">
+  <div class="container about-grid">
+    <div class="about-photo reveal">
+      <img src="https://loremflickr.com/700/860/beautician,salon,work/all?lock=304" alt="Stylist at work inside Shine & Glow">
+      <div class="float-badge"><strong>Betnoti</strong><span>Odisha 757025</span></div>
+    </div>
+    <div class="about-copy reveal">
+      <span class="tag">Why brides &amp; regulars choose us</span>
+      <h2>A studio built around unhurried, detailed beauty work.</h2>
+      <p>Shine &amp; Glow started with a simple idea: bridal-quality attention shouldn't be reserved for weddings alone. Every appointment — a quick party look or a full bridal package — gets the same care, clean tools and premium products.</p>
+      <ul class="why-list">
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 2 3 7v6c0 5 4 9 9 9s9-4 9-9V7z"/></svg>
+          <div><h4>Hygienic, private space</h4><p>Sanitised tools and a comfortable, private setting for every client.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 2 15 9l7 1-5 5 1.5 7L12 18l-6.5 4L7 15l-5-5 7-1z"/></svg>
+          <div><h4>Premium products</h4><p>We use trusted, skin-friendly brands for make-up, skin and hair work.</p></div>
+        </li>
+        <li>
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2zm1 15h-2v-2h2zm0-4h-2V7h2z"/></svg>
+          <div><h4>Straightforward pricing</h4><p>No surprises — every service is quoted clearly before you book.</p></div>
+        </li>
+      </ul>
+      <a class="btn btn-gold" href="about.html">Read our story</a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SERVICES ============ -->
+<section class="services" id="services">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="tag">Our services</span>
+      <h2>Priced clearly. Booked instantly on WhatsApp.</h2>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="chapter-head">
+        <h3>Beauty Parlour</h3>
+        <p>Full bridal styling and everyday hair work.</p>
+      </div>
+      <div class="service-rows">
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/bridal,makeup,bride/all?lock=201" alt="Bridal services"></div>
+          <div class="info"><h4>Bridal services</h4><p>Complete bridal look — hair, make-up and draping — for your big day.</p></div>
+          <div class="price-cta">
+            <span class="price">₹5,000<small>full package</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Bridal%20services%20(%E2%82%B95%2C000).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/hairstyle,salon,curls/all?lock=202" alt="Hairstyling"></div>
+          <div class="info"><h4>Hairstyling</h4><p>Blow-dry, curls, updos and event-ready styling for any occasion.</p></div>
+          <div class="price-cta">
+            <span class="price">₹4,999<small>per session</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Hairstyling%20(%E2%82%B94%2C999).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="chapter-head">
+        <h3>Make-up services</h3>
+        <p>From a quick party look to long-lasting permanent make-up.</p>
+      </div>
+      <div class="service-rows">
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/makeup,glam,cosmetics/all?lock=203" alt="Party make-up"></div>
+          <div class="info"><h4>Party make-up</h4><p>Glam, natural or festive looks — tailored to your outfit and event.</p></div>
+          <div class="price-cta">
+            <span class="price">₹500<small>starting from</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Party%20make-up%20(from%20%E2%82%B9500).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/eyebrow,microblading,beauty/all?lock=204" alt="Permanent make-up"></div>
+          <div class="info"><h4>Permanent make-up</h4><p>Long-lasting definition for brows, liner or lips.</p></div>
+          <div class="price-cta">
+            <span class="price">₹3,999<small>per session</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Permanent%20make-up%20(%E2%82%B93%2C999).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapter reveal">
+      <div class="chapter-head">
+        <h3>Skin &amp; hair treatments</h3>
+        <p>Facials and smoothening treatments for everyday glow.</p>
+      </div>
+      <div class="service-rows">
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/facial,skincare,spa/all?lock=205" alt="Skin treatment"></div>
+          <div class="info"><h4>Skin treatment</h4><p>Cleansing facials and skin-brightening treatments for every skin type.</p></div>
+          <div class="price-cta">
+            <span class="price">₹800<small>starting from</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Skin%20treatment%20(from%20%E2%82%B9800).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+        <div class="service-row">
+          <div class="thumb"><img src="https://loremflickr.com/500/380/hairstraightening,silkyhair,salon/all?lock=206" alt="Straightening and smoothening"></div>
+          <div class="info"><h4>Straightening / smoothening</h4><p>Frizz-free, silky hair that lasts for months.</p></div>
+          <div class="price-cta">
+            <span class="price">₹3,999<small>starting from</small></span>
+            <a class="book-link" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%2C%20I%27d%20like%20to%20enquire%20about%20Straightening%2FSmoothening%20(from%20%E2%82%B93%2C999).">
+              <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>Book this
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ REVIEWS ============ -->
+<section class="reviews">
+  <div class="container reviews-grid">
+    <div class="reveal">
+      <span class="tag" style="color:var(--gold-light)">Loved locally</span>
+      <h2>Kind words from our clients.</h2>
+      <p class="lede">If Shine &amp; Glow made your day a little more beautiful, a quick Google review helps other Betnoti brides and clients find us.</p>
+      <a class="btn btn-primary" style="background:linear-gradient(120deg,var(--gold),#a9843f); box-shadow:0 16px 30px -12px rgba(198,161,91,.5);" target="_blank" rel="noopener"
+         href="https://www.google.com/maps/search/?api=1&amp;query=Shine%20%26%20Glow%20Betnoti%20Odisha%20757025">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        Rate us on Google
+      </a>
+    </div>
+    <div class="reveal">
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p>"My bridal make-up stayed perfect for the entire ceremony — so many compliments!"</p>
+        <span>— A recent bride, Betnoti</span>
+      </div>
+      <div class="quote-card">
+        <div class="stars">★★★★★</div>
+        <p>"Booked over WhatsApp in two minutes. The skin treatment left my face glowing."</p>
+        <span>— Regular client</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ CTA BANNER ============ -->
+<section class="cta-banner">
+  <div class="container">
+    <h2>Ready for your glow-up?</h2>
+    <p>Tell us the service and your preferred time — we'll confirm your slot on WhatsApp within minutes.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%20Shine%20%26%20Glow%2C%20I%27d%20like%20to%20book%20an%20appointment.">
+        <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3z"/></svg>
+        Book on WhatsApp
+      </a>
+      <a class="btn btn-ghost" style="border-color:rgba(251,245,238,.5); color:var(--ivory);" href="contact.html">Get directions</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="container footer-grid">
+    <div class="footer-brand">
+      <a href="index.html" class="logo footer-logo">Shine <span class="amp">&amp;</span> Glow</a>
+      <p>Betnoti's boutique for bridal beauty, hairstyling, make-up and skin care.</p>
+      <a class="review-link" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&amp;query=Shine%20%26%20Glow%20Betnoti%20Odisha%20757025">
+        <svg viewBox="0 0 24 24"><path d="M12 2l2.4 6.6L21 11l-6.6 2.4L12 20l-2.4-6.6L3 11l6.6-2.4z"/></svg>
+        Rate us on Google
+      </a>
+    </div>
+    <div class="footer-links">
+      <h4>Explore</h4>
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </div>
+    <div class="footer-contact">
+      <h4>Visit &amp; call</h4>
+      <p>CHC, Backside of,<br>Betnoti, Odisha 757025</p>
+      <a href="tel:+919439732414">+91 94397 32414</a>
+      <a target="_blank" rel="noopener" href="https://wa.me/919439732414?text=Hi%20Shine%20%26%20Glow%2C%20I%27d%20like%20to%20book%20an%20appointment.">Chat on WhatsApp</a>
+      <p class="hours">Open daily · 9:00 AM – 8:00 PM</p>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <p>© 2026 Shine &amp; Glow. All rights reserved.</p>
+    <p>Betnoti, Odisha 757025</p>
+  </div>
+</footer>
+
+<a class="whatsapp-float" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"
+   href="https://wa.me/919439732414?text=Hi%20Shine%20%26%20Glow%2C%20I%27d%20like%20to%20book%20an%20appointment.">
+  <svg viewBox="0 0 32 32"><path d="M16.02 3C9.4 3 4 8.38 4 15c0 2.36.68 4.55 1.86 6.4L4 29l7.8-1.8A11.9 11.9 0 0 0 16.02 27C22.65 27 28 21.62 28 15S22.65 3 16.02 3zm0 21.6c-2 0-3.86-.55-5.45-1.5l-.39-.23-4.63 1.07 1.1-4.5-.25-.4A9.55 9.55 0 0 1 6.4 15c0-5.3 4.32-9.6 9.62-9.6 5.3 0 9.6 4.3 9.6 9.6s-4.3 9.6-9.6 9.6z"/></svg>
+</a>
+
+<script>
+  // Mobile nav toggle
+  const navToggle = document.getElementById('navToggle');
+  const mainNav = document.getElementById('mainNav');
+  navToggle.addEventListener('click', () => mainNav.classList.toggle('open'));
+  mainNav.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mainNav.classList.remove('open')));
+
+  // 3D hero parallax on mouse move
+  const hero = document.getElementById('hero');
+  const stack = document.getElementById('stack3d');
+  if (window.matchMedia('(min-width:981px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    hero.addEventListener('mousemove', (e) => {
+      const r = hero.getBoundingClientRect();
+      const x = (e.clientX - r.left) / r.width - 0.5;
+      const y = (e.clientY - r.top) / r.height - 0.5;
+      stack.style.transform = `rotateY(${x * 14}deg) rotateX(${-y * 10}deg)`;
+    });
+    hero.addEventListener('mouseleave', () => { stack.style.transform = 'rotateY(0) rotateX(0)'; });
+  }
+
+  // Scroll-reveal for sections
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('in'); observer.unobserve(entry.target); } });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
